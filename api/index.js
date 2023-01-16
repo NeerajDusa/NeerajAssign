@@ -3,8 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
-// const userRoute = require("./routes/user");
-// const authRoute = require("./routes/auth");
+const cors = require("cors");
+
 const formRoute = require("./routes/form");
 
 const fs=require('fs')
@@ -17,7 +17,8 @@ mongoose
   });
 
 
-app.use(express.static("build"))
+app.use(express.static("build"));
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/form", formRoute);
